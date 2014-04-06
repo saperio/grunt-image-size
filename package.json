@@ -1,17 +1,19 @@
 {
   "name": "grunt-image-size",
   "version": "0.0.1",
-  "description": "g",
+  "description": "Retrieve image size information",
   "homepage": "home",
-  "repository": "none",
+  "repository": {
+    "type": "git",
+    "url": "https://https://github.com/saperio/grunt-image-size.git"
+  },
   "author": {
     "name": "SAPer",
     "email": "gsaper@gmail.com"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin", "image", "image-size"
   ],
-  "main": "Gruntfile.js",
   "engines": {
     "node": ">= 0.8.0"
   },
@@ -22,16 +24,5 @@
   ],
   "dependencies": {
     "image-size": ""
-  },
-  "devDependencies": {
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-jshint": "~0.8.0",
-    "grunt-contrib-nodeunit": "~0.3.0",
-    "grunt": "~0.4.2",
-    "jshint-stylish": "~0.1.5",
-    "load-grunt-tasks": "~0.3.0"
-  },
-  "scripts": {
-    "test": "grunt test"
   }
 }
