@@ -1,6 +1,6 @@
 # grunt-image-size
 
-> g
+Retrieve image size information. Just [image-size](https://github.com/netroy/image-size) port for grunt. 
 
 ## Getting Started
 This plugin requires Grunt.
@@ -20,73 +20,48 @@ grunt.loadNpmTasks('grunt-image-size');
 ## The "image_size" task
 
 ### Overview
-In your project's Gruntfile, add a section named `image_size` to the data object passed into `grunt.initConfig()`.
-
+This task produce a vector of an image size data from all provided source files:
 ```js
-grunt.initConfig({
-  image_size: {
-    options: {
-      // Task-specific options go here.
+[
+    {
+        name : 'path/to/file'
+        width : 100,
+        height : 100
     },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
-  },
-})
+    ...
+]
 ```
+And outputs it to grunt Config Data and/or to dest file (as json).
 
 ### Options
 
-#### options.separator
+#### options.configObject
 Type: `String`
-Default value: `',  '`
+Default value: `''`
 
-A string value that is used to do something with whatever.
+A string value that is used as a name for grunt config object for outputing data.
 
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
 
 ### Usage Examples
-
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
-
+In this example all images from `img/` are processed and size information drop to `image_data` config object and image_data.json file.
 ```js
 grunt.initConfig({
-  image_size: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
+    image_size: {
+        options: {
+            configObject : 'image_data'
+        },
+        files: [{
+        src : 'img/*',
+            dest : 'image_data.json'
+    }]
+    }
 })
 ```
+From `image_data` it can be accessed with `grunt.config.get('image_data')` or via template `<%= image_data %>`
 
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
-  image_size: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
-
-## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+0.0.1
 
 ## License
 Copyright (c) 2014 SAPer. Licensed under the MIT license.
