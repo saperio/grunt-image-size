@@ -51,17 +51,14 @@ grunt.initConfig({
             configObject : 'image_data'
         },
         files: [{
-        src : 'img/*',
+            src : 'img/*',
             dest : 'image_data.json'
-    }]
+        }]
     }
 })
 ```
 From `image_data` it can be accessed with `grunt.config.get('image_data')` or via template `<%= image_data %>`
 
-
-## Release History
-0.0.1
 
 ## License
 Copyright (c) 2014 SAPer. Licensed under the MIT license.

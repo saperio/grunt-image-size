@@ -1,11 +1,14 @@
 {
   "name": "grunt-image-size",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Retrieve image size information",
-  "homepage": "home",
+  "homepage": "https://github.com/saperio/grunt-image-size",
   "repository": {
     "type": "git",
-    "url": "https://https://github.com/saperio/grunt-image-size.git"
+    "url": "https://github.com/saperio/grunt-image-size.git"
+  },
+  "bugs": {
+    "url": "https://github.com/saperio/grunt-image-size/issues"
   },
   "author": {
     "name": "SAPer",
