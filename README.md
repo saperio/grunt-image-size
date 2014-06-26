@@ -1,6 +1,6 @@
 # grunt-image-size
 
-Retrieve image size information. Just [image-size](https://github.com/netroy/image-size) port for grunt. 
+Retrieve image size information. The [image-size](https://github.com/netroy/image-size) port for grunt. 
 
 ## Getting Started
 This plugin requires Grunt.
@@ -20,7 +20,7 @@ grunt.loadNpmTasks('grunt-image-size');
 ## The "image_size" task
 
 ### Overview
-This task produce a vector of an image size data from all provided source files:
+This task produces a vector of an image size data from all provided source files:
 ```js
 [
     {
@@ -43,7 +43,8 @@ A string value that is used as a name for grunt config object for outputing data
 
 
 ### Usage Examples
-In this example all images from `img/` are processed and size information drop to `image_data` config object and image_data.json file.
+After processing all images from `img/` script writes size information to `image_data` config object and image_data.json file.
+
 ```js
 grunt.initConfig({
     image_size: {
