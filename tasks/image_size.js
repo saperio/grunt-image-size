@@ -9,6 +9,7 @@
 
 module.exports = function(grunt) {
 	var path = require('path');
+	var chalk = require('chalk');
 	var sizer = require('image-size');
 	var types = [
 		'.png',
@@ -51,6 +52,7 @@ module.exports = function(grunt) {
 
 			if (file.dest) {
 				grunt.file.write(file.dest, JSON.stringify(output));
+				grunt.log.writeln('File ' + chalk.cyan(file.dest) + ' created.');
 			}
 		});
 	});
