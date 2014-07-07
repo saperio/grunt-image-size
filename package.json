@@ -1,6 +1,6 @@
 {
   "name": "grunt-image-size",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Retrieve image size information",
   "homepage": "https://github.com/saperio/grunt-image-size",
   "repository": {
