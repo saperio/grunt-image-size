@@ -9,6 +9,7 @@
 
 module.exports = function(grunt) {
 	var path = require('path');
+	var chalk = require('chalk');
 	var sizer = require('image-size');
 	var types = [
 		'.png',
@@ -26,14 +27,14 @@ module.exports = function(grunt) {
 		});
 
 		this.files.forEach(function (file) {
-			if ((!options.configObject || !options.configObject.length) && !grunt.file.isFile(file.dest)) {
+			if ((!options.configObject || !options.configObject.length) && !file.dest) {
 				grunt.fail.warn('Neither options.configObject nor dest specified for this task.');
 				return;
 			}
 
 			var output = [];
 			file.src.forEach(function (src) {
-				if (grunt.file.exists(src) && grunt.file.isFile(src) && types.indexOf(path.extname(src).toLowerCase()) != -1) {
+				if (grunt.file.exists(src) && grunt.file.isFile(src) && types.indexOf(path.extname(src).toLowerCase()) !== -1) {
 					var dimensions = sizer(src);
 					output.push({
 						name : src,
@@ -49,8 +50,9 @@ module.exports = function(grunt) {
 				grunt.config.set(options.configObject, output);
 			}
 
-			if (grunt.file.isFile(file.dest)) {
+			if (file.dest) {
 				grunt.file.write(file.dest, JSON.stringify(output));
+				grunt.log.writeln('File ' + chalk.cyan(file.dest) + ' created.');
 			}
 		});
 	});
