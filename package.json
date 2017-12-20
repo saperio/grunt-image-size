@@ -39,6 +39,7 @@
   },
   "scripts": {
     "test": "eslint \"./**/*.js\"",
-    "format": "eslint \"./**/*.js\" --fix"
+    "format": "eslint \"./**/*.js\" --fix",
+    "prepublishOnly": "npm test"
   }
 }
