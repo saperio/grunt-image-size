@@ -7,10 +7,11 @@
 
 'use strict';
 
+var path = require('path');
+var chalk = require('chalk');
+var sizer = require('image-size');
+
 module.exports = function(grunt) {
-  var path = require('path');
-  var chalk = require('chalk');
-  var sizer = require('image-size');
   var types = ['.png', '.gif', '.bmp', '.psd', '.jpg', '.tiff', '.webp'];
 
   grunt.registerMultiTask(
