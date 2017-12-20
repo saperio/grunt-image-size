@@ -15,7 +15,7 @@ module.exports = function(grunt) {
 
   grunt.registerMultiTask(
     'image_size',
-    'retrieve image saze information',
+    'Retrieve images size information',
     function() {
       var options = this.options({
         configObject: ''
