@@ -22,6 +22,10 @@
   "engines": {
     "node": ">= 0.8.0"
   },
+  "main": "tasks/grayMatter.js",
+  "files": [
+    "tasks"
+  ],
   "licenses": "MIT",
   "dependencies": {
     "chalk": "^0.5.0",
