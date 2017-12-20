@@ -60,6 +60,11 @@ grunt.initConfig({
 ```
 From `image_data` it can be accessed with `grunt.config.get('image_data')` or via template `<%= image_data %>`
 
+### Development and testing
+
+Please, lint the code before posting PRs.
+
+Run `npm test` to lint the code. See some errors? Run `npm run format` to fix them.
 
 ## License
 Copyright (c) 2014 SAPer. Licensed under the MIT license.

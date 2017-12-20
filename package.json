@@ -15,7 +15,9 @@
     "email": "gsaper@gmail.com"
   },
   "keywords": [
-    "gruntplugin", "image", "image-size"
+    "gruntplugin",
+    "image",
+    "image-size"
   ],
   "engines": {
     "node": ">= 0.8.0"
@@ -28,5 +30,15 @@
   "dependencies": {
     "chalk": "^0.5.0",
     "image-size": ""
+  },
+  "devDependencies": {
+    "eslint": "^4.13.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.4.0",
+    "prettier": "^1.9.2"
+  },
+  "scripts": {
+    "test": "eslint \"./**/*.js\"",
+    "format": "eslint \"./**/*.js\" --fix"
   }
 }
