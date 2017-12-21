@@ -17,6 +17,9 @@ module.exports = function(grunt) {
     'Retrieve images size information',
     function() {
       var options = this.options({
+        processName: undefined,
+        processEntry: undefined,
+        processSizes: undefined,
         configObject: ''
       });
 
@@ -40,8 +43,19 @@ module.exports = function(grunt) {
           if (!grunt.file.isFile(src)) return;
 
           var size = sizer(src);
+          var name = src;
 
-          sizes.push({ name: src, width: size.width, height: size.height });
+          if (typeof options.processName === 'function') {
+            name = options.processName.call(file, src, file);
+          }
+
+          var entry = { name: name, width: size.width, height: size.height };
+
+          if (typeof options.processEntry === 'function') {
+            entry = options.processEntry.call(file, entry, src, file);
+          }
+
+          sizes.push(entry);
 
           grunt.verbose.writeln(
             'Size of ' +
@@ -54,6 +68,10 @@ module.exports = function(grunt) {
 
           processedFiles++;
         });
+
+        if (typeof options.processSizes === 'function') {
+          sizes = options.processSizes.call(file, sizes, file);
+        }
 
         if (options.configObject && options.configObject.length) {
           grunt.config.set(options.configObject, sizes);

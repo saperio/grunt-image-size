@@ -1,5 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Image Size task should produce correct data file with \`processEntry\` option for single source 1`] = `
+Array [
+  Object {
+    "height": 150,
+    "name": "tests/fixtures/single/image-1.jpg",
+    "test": "This is test a property",
+    "width": 100,
+  },
+]
+`;
+
+exports[`Image Size task should produce correct data file with \`processName\` option for single source 1`] = `
+Array [
+  Object {
+    "height": 150,
+    "name": "/image-1.jpg",
+    "width": 100,
+  },
+]
+`;
+
+exports[`Image Size task should produce correct data file with \`processSizes\` option for single source 1`] = `
+Array [
+  Object {
+    "height": 150,
+    "name": "tests/fixtures/single/image-1.jpg",
+    "width": 100,
+  },
+  "This is a testing value",
+]
+`;
+
 exports[`Image Size task should produce correct data file with defaults for multiple nested sources 1`] = `
 Array [
   Object {
