@@ -29,36 +29,32 @@ module.exports = function(grunt) {
           return grunt.log.error(
             'No source files specified for ' + chalk.cyan(dest) + '.'
           );
-        if (!file.dest) return grunt.log.error('No dest file specified');
+        if (!file.dest) return grunt.log.error('No dest file specified.');
 
-        var output = [];
+        var sizes = [];
 
         file.src.forEach(function(src) {
           if (!grunt.file.isFile(src)) return;
 
-          var dimensions = sizer(src);
+          var size = sizer(src);
 
-          output.push({
-            name: src,
-            width: dimensions.width,
-            height: dimensions.height
-          });
+          sizes.push({ name: src, width: size.width, height: size.height });
 
           grunt.verbose.writeln(
-            'dimensions of ' +
+            'Size of ' +
               src +
               ' width: ' +
-              dimensions.width.toString() +
+              size.width.toString() +
               ', height: ' +
-              dimensions.height.toString()
+              size.height.toString()
           );
         });
 
         if (options.configObject && options.configObject.length) {
-          grunt.config.set(options.configObject, output);
+          grunt.config.set(options.configObject, sizes);
         }
 
-        grunt.file.write(file.dest, JSON.stringify(output));
+        grunt.file.write(file.dest, JSON.stringify(sizes));
         grunt.log.writeln('File ' + chalk.cyan(file.dest) + ' created.');
       });
     }
