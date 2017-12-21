@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image Size task should produce correct data file with defaults for multiple nested sources 1`] = `
+Array [
+  Object {
+    "height": 150,
+    "name": "tests/fixtures/nested/image-1.jpg",
+    "width": 100,
+  },
+  Object {
+    "height": 250,
+    "name": "tests/fixtures/nested/image-2.png",
+    "width": 200,
+  },
+]
+`;
+
+exports[`Image Size task should produce correct data file with defaults for multiple sources 1`] = `
+Array [
+  Object {
+    "height": 150,
+    "name": "tests/fixtures/multiple/image-1.jpg",
+    "width": 100,
+  },
+  Object {
+    "height": 250,
+    "name": "tests/fixtures/multiple/image-2.png",
+    "width": 200,
+  },
+]
+`;
+
+exports[`Image Size task should produce correct data file with defaults for single source 1`] = `
+Array [
+  Object {
+    "height": 150,
+    "name": "tests/fixtures/single/image-1.jpg",
+    "width": 100,
+  },
+]
+`;
+
+exports[`Image Size task should produce correct data files with defaults for multiple nested expanded sources 1`] = `
+Array [
+  "build/expandedNestedWithDefaults/image-1.json",
+  "build/expandedNestedWithDefaults/image-2.json",
+  "build/expandedNestedWithDefaults/level-2/image-3.json",
+]
+`;
+
+exports[`Image Size task should produce correct data files with defaults for multiple nested expanded sources 2`] = `
+Array [
+  Object {
+    "height": 150,
+    "name": "tests/fixtures/nested/image-1.jpg",
+    "width": 100,
+  },
+]
+`;
+
+exports[`Image Size task should produce correct data files with defaults for multiple nested expanded sources 3`] = `
+Array [
+  Object {
+    "height": 250,
+    "name": "tests/fixtures/nested/image-2.png",
+    "width": 200,
+  },
+]
+`;
+
+exports[`Image Size task should produce correct data files with defaults for multiple nested expanded sources 4`] = `Array []`;

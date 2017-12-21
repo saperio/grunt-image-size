@@ -60,6 +60,8 @@ module.exports = (grunt) => {
     }
   })
 
+  // This is just for manual testing. It isn't used anywhere
+  // Instead, Jest manually calls task which it needs to test
   grunt.registerTask('test', [
     'clean',
     'image_size'
