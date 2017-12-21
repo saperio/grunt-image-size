@@ -22,7 +22,7 @@ module.exports = function(grunt) {
         processSizes: undefined,
         configObject: '',
         replacer: null,
-        space: null
+        space: 2
       });
 
       if (!this.files.length) {
