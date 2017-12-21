@@ -12,8 +12,6 @@ var chalk = require('chalk');
 var sizer = require('image-size');
 
 module.exports = function(grunt) {
-  var types = ['.png', '.gif', '.bmp', '.psd', '.jpg', '.tiff', '.webp'];
-
   grunt.registerMultiTask(
     'image_size',
     'Retrieve images size information',
@@ -35,11 +33,7 @@ module.exports = function(grunt) {
 
         var output = [];
         file.src.forEach(function(src) {
-          if (
-            grunt.file.exists(src) &&
-            grunt.file.isFile(src) &&
-            types.indexOf(path.extname(src).toLowerCase()) !== -1
-          ) {
+          if (grunt.file.exists(src) && grunt.file.isFile(src)) {
             var dimensions = sizer(src);
             output.push({
               name: src,

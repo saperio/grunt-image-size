@@ -12,6 +12,11 @@ Array [
     "name": "tests/fixtures/nested/image-2.png",
     "width": 200,
   },
+  Object {
+    "height": 350,
+    "name": "tests/fixtures/nested/level-2/image-3.svg",
+    "width": 300,
+  },
 ]
 `;
 
@@ -26,6 +31,11 @@ Array [
     "height": 250,
     "name": "tests/fixtures/multiple/image-2.png",
     "width": 200,
+  },
+  Object {
+    "height": 350,
+    "name": "tests/fixtures/multiple/image-3.svg",
+    "width": 300,
   },
 ]
 `;
@@ -68,4 +78,12 @@ Array [
 ]
 `;
 
-exports[`Image Size task should produce correct data files with defaults for multiple nested expanded sources 4`] = `Array []`;
+exports[`Image Size task should produce correct data files with defaults for multiple nested expanded sources 4`] = `
+Array [
+  Object {
+    "height": 350,
+    "name": "tests/fixtures/nested/level-2/image-3.svg",
+    "width": 300,
+  },
+]
+`;
