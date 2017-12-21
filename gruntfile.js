@@ -28,22 +28,22 @@ module.exports = (grunt) => {
 
   grunt.config('image_size', {
     singleWithDefaults: {
-      src: '<%= path.source.single %>/*.{svg,png,jpg}',
+      src: '<%= path.source.single %>/*',
       dest: '<%= path.build.singleWithDefaults %>'
     },
     multipleWithDefaults: {
-      src: '<%= path.source.multiple %>/*.{svg,png,jpg}',
+      src: '<%= path.source.multiple %>/*',
       dest: '<%= path.build.multipleWithDefaults %>'
     },
     nestedWithDefaults: {
-      src: '<%= path.source.nested %>/{,**/}*.{svg,png,jpg}',
+      src: '<%= path.source.nested %>/{,**/}*',
       dest: '<%= path.build.nestedWithDefaults %>'
     },
     expandedNestedWithDefaults: {
       files: [{
         expand: true,
         cwd: '<%= path.source.nested %>',
-        src: ['{,**/}*.{svg,png,jpg}'],
+        src: ['{,**/}*'],
         ext: '.json',
         dest: '<%= path.build.expandedNestedWithDefaults %>'
       }]
