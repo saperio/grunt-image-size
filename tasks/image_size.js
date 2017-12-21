@@ -24,11 +24,14 @@ module.exports = function(grunt) {
         return grunt.log.error('No files or `options.configObject` specified.');
       }
 
+      var processedFiles = 0;
+
       this.files.forEach(function(file) {
         if (!file.src.length)
           return grunt.log.error(
             'No source files specified for ' + chalk.cyan(dest) + '.'
           );
+
         if (!file.dest) return grunt.log.error('No dest file specified.');
 
         var sizes = [];
@@ -48,6 +51,8 @@ module.exports = function(grunt) {
               ', height: ' +
               size.height.toString()
           );
+
+          processedFiles++;
         });
 
         if (options.configObject && options.configObject.length) {
@@ -57,6 +62,13 @@ module.exports = function(grunt) {
         grunt.file.write(file.dest, JSON.stringify(sizes));
         grunt.log.writeln('File ' + chalk.cyan(file.dest) + ' created.');
       });
+
+      grunt.log.ok(
+        chalk.cyan(processedFiles) +
+          ' ' +
+          grunt.util.pluralize(processedFiles, 'file/files') +
+          ' processed'
+      );
     }
   );
 };
