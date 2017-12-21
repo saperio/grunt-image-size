@@ -54,6 +54,7 @@ exports[`Image Size task should produce correct data files with defaults for mul
 Array [
   "build/expandedNestedWithDefaults/image-1.json",
   "build/expandedNestedWithDefaults/image-2.json",
+  "build/expandedNestedWithDefaults/level-2.json",
   "build/expandedNestedWithDefaults/level-2/image-3.json",
 ]
 `;
@@ -78,7 +79,9 @@ Array [
 ]
 `;
 
-exports[`Image Size task should produce correct data files with defaults for multiple nested expanded sources 4`] = `
+exports[`Image Size task should produce correct data files with defaults for multiple nested expanded sources 4`] = `Array []`;
+
+exports[`Image Size task should produce correct data files with defaults for multiple nested expanded sources 5`] = `
 Array [
   Object {
     "height": 350,
