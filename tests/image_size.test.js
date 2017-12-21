@@ -41,7 +41,7 @@ describe('Image Size task', () => {
     })
   )
 
-  // it('should error on file with error', () =>
-  //   expect(runGrunt(['image_size:withError'])).rejects.toBeDefined()
-  // )
+  it('should error on not image file', () =>
+    expect(runGrunt(['image_size:notImage'])).rejects.toBeDefined()
+  )
 })

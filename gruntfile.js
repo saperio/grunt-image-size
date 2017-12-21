@@ -18,8 +18,8 @@ module.exports = (grunt) => {
         singleWithDefaults: '<%= path.build.root %>/singleWithDefaults.json',
         multipleWithDefaults: '<%= path.build.root %>/multipleWithDefaults.json',
         nestedWithDefaults: '<%= path.build.root %>/nestedWithDefaults.json',
-        expandedNestedWithDefaults: '<%= path.build.root %>/expandedNestedWithDefaults'
-        // withError: '<%= path.build.root %>/withError.json'
+        expandedNestedWithDefaults: '<%= path.build.root %>/expandedNestedWithDefaults',
+        notImage: '<%= path.build.root %>/not-image.json'
       }
     }
   })
@@ -47,11 +47,11 @@ module.exports = (grunt) => {
         ext: '.json',
         dest: '<%= path.build.expandedNestedWithDefaults %>'
       }]
+    },
+    notImage: {
+      src: '<%= path.source.notImage %>/*',
+      dest: '<%= path.build.notImage %>'
     }
-    // withError: {
-    //   src: '<%= path.source.withError %>/*',
-    //   dest: '<%= path.build.withError %>'
-    // }
   })
 
   grunt.config('clean', {
