@@ -20,16 +20,16 @@ module.exports = function(grunt) {
         configObject: ''
       });
 
+      if (!this.files.length && !options.configObject.length) {
+        return grunt.log.error('No files or `options.configObject` specified.');
+      }
+
       this.files.forEach(function(file) {
-        if (
-          (!options.configObject || !options.configObject.length) &&
-          !file.dest
-        ) {
-          grunt.fail.warn(
-            'Neither options.configObject nor dest specified for this task.'
+        if (!file.src.length)
+          return grunt.log.error(
+            'No source files specified for ' + chalk.cyan(dest) + '.'
           );
-          return;
-        }
+        if (!file.dest) return grunt.log.error('No dest file specified');
 
         var output = [];
         file.src.forEach(function(src) {
