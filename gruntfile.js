@@ -19,7 +19,10 @@ module.exports = (grunt) => {
         multipleWithDefaults: '<%= path.build.root %>/multipleWithDefaults.json',
         nestedWithDefaults: '<%= path.build.root %>/nestedWithDefaults.json',
         expandedNestedWithDefaults: '<%= path.build.root %>/expandedNestedWithDefaults',
-        notImage: '<%= path.build.root %>/not-image.json'
+        notImage: '<%= path.build.root %>/not-image.json',
+        singleWithProcessName: '<%= path.build.root %>/singleWithProcessName.json',
+        singleWithProcessEntry: '<%= path.build.root %>/singleWithProcessEntry.json',
+        singleWithProcessSizes: '<%= path.build.root %>/singleWithProcessSizes.json'
       }
     }
   })
@@ -47,6 +50,33 @@ module.exports = (grunt) => {
         ext: '.json',
         dest: '<%= path.build.expandedNestedWithDefaults %>'
       }]
+    },
+    singleWithProcessName: {
+      options: {
+        processName: (name) => name.replace(grunt.template.process('<%= path.source.single %>'), '')
+      },
+      src: '<%= path.source.single %>/*',
+      dest: '<%= path.build.singleWithProcessName %>'
+    },
+    singleWithProcessEntry: {
+      options: {
+        processEntry: (entry) => {
+          entry.test = 'This is test a property'
+          return entry
+        }
+      },
+      src: '<%= path.source.single %>/*',
+      dest: '<%= path.build.singleWithProcessEntry %>'
+    },
+    singleWithProcessSizes: {
+      options: {
+        processSizes: (sizes) => {
+          sizes.push('This is a testing value')
+          return sizes
+        }
+      },
+      src: '<%= path.source.single %>/*',
+      dest: '<%= path.build.singleWithProcessSizes %>'
     },
     notImage: {
       src: '<%= path.source.notImage %>/*',

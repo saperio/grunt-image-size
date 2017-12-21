@@ -41,6 +41,24 @@ describe('Image Size task', () => {
     })
   )
 
+  it('should produce correct data file with `processName` option for single source', () =>
+    runGrunt(['image_size:singleWithProcessName']).then(() =>
+      expect(readJSON(buildPath.singleWithProcessName)).toMatchSnapshot()
+    )
+  )
+
+  it('should produce correct data file with `processEntry` option for single source', () =>
+    runGrunt(['image_size:singleWithProcessEntry']).then(() =>
+      expect(readJSON(buildPath.singleWithProcessEntry)).toMatchSnapshot()
+    )
+  )
+
+  it('should produce correct data file with `processSizes` option for single source', () =>
+    runGrunt(['image_size:singleWithProcessSizes']).then(() =>
+      expect(readJSON(buildPath.singleWithProcessSizes)).toMatchSnapshot()
+    )
+  )
+
   it('should error on not image file', () =>
     expect(runGrunt(['image_size:notImage'])).rejects.toBeDefined()
   )
