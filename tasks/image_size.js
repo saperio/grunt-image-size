@@ -20,7 +20,7 @@ module.exports = function(grunt) {
         configObject: ''
       });
 
-      if (!this.files.length && !options.configObject.length) {
+      if (!this.files.length) {
         return grunt.log.error('No files or `options.configObject` specified.');
       }
 
