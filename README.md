@@ -41,7 +41,7 @@ And outputs it to grunt Config Data and/or to dest file (as json).
 
 #### options.configObject
 
-Type: `String` Default: `''`
+Type: `String` Default: `undefined`
 
 A string value that is used as a name for grunt config object for outputing data.
 

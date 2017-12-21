@@ -20,7 +20,7 @@ module.exports = function(grunt) {
         processName: undefined,
         processEntry: undefined,
         processSizes: undefined,
-        configObject: '',
+        configObject: undefined,
         replacer: null,
         space: 2
       });
