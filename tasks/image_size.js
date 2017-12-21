@@ -58,10 +58,8 @@ module.exports = function(grunt) {
           grunt.config.set(options.configObject, output);
         }
 
-        if (file.dest) {
-          grunt.file.write(file.dest, JSON.stringify(output));
-          grunt.log.writeln('File ' + chalk.cyan(file.dest) + ' created.');
-        }
+        grunt.file.write(file.dest, JSON.stringify(output));
+        grunt.log.writeln('File ' + chalk.cyan(file.dest) + ' created.');
       });
     }
   );
