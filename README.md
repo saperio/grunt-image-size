@@ -69,7 +69,7 @@ Allows to alter formed data of each `src`.
 Will be invoked with injected values for following arguments:
 
 * `entry` — original `src` data;
-* `src` — file path of current `src`.
+* `src` — file path of current `src`;
 * `file` — `file` of current `src`.
 
 `this` will correspond to the current `file`.
@@ -86,7 +86,7 @@ Result of this function will be used for printing Object to `dest` file.
 
 Will be invoked with injected values for following arguments:
 
-* `sizes` — extracted and optionally processed final data.
+* `sizes` — extracted and optionally processed final data;
 * `file` — current `file` instance.
 
 `this` will correspond to the current `file` of the task.
