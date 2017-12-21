@@ -32,24 +32,26 @@ module.exports = function(grunt) {
         if (!file.dest) return grunt.log.error('No dest file specified');
 
         var output = [];
-        file.src.forEach(function(src) {
-          if (grunt.file.exists(src) && grunt.file.isFile(src)) {
-            var dimensions = sizer(src);
-            output.push({
-              name: src,
-              width: dimensions.width,
-              height: dimensions.height
-            });
 
-            grunt.verbose.writeln(
-              'dimensions of ' +
-                src +
-                ' width: ' +
-                dimensions.width.toString() +
-                ', height: ' +
-                dimensions.height.toString()
-            );
-          }
+        file.src.forEach(function(src) {
+          if (!grunt.file.isFile(src)) return;
+
+          var dimensions = sizer(src);
+
+          output.push({
+            name: src,
+            width: dimensions.width,
+            height: dimensions.height
+          });
+
+          grunt.verbose.writeln(
+            'dimensions of ' +
+              src +
+              ' width: ' +
+              dimensions.width.toString() +
+              ', height: ' +
+              dimensions.height.toString()
+          );
         });
 
         if (options.configObject && options.configObject.length) {
