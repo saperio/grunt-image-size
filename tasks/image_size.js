@@ -20,7 +20,9 @@ module.exports = function(grunt) {
         processName: undefined,
         processEntry: undefined,
         processSizes: undefined,
-        configObject: ''
+        configObject: '',
+        replacer: null,
+        space: null
       });
 
       if (!this.files.length) {
@@ -77,7 +79,11 @@ module.exports = function(grunt) {
           grunt.config.set(options.configObject, sizes);
         }
 
-        grunt.file.write(file.dest, JSON.stringify(sizes));
+        grunt.file.write(
+          file.dest,
+          JSON.stringify(sizes, options.replacer, options.space)
+        );
+
         grunt.log.writeln('File ' + chalk.cyan(file.dest) + ' created.');
       });
 

@@ -93,6 +93,20 @@ Will be invoked with injected values for following arguments:
 
 Should return whatever you want to print as a result.
 
+#### options.replacer
+
+Type: `Function|String[]|Number[]` Default: `null`
+
+Pass [replacer](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) parameter to `JSON.stringify()`.
+
+#### options.space
+
+Type: `String|Integer` Default: `2`
+
+Pass [space](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) parameter to `JSON.stringify()`.
+
+Controls indentation for outputted JSON file.
+
 ### Usage Examples
 
 After processing all images from `img/` script writes size information to `image_data` config object and image_data.json file.
