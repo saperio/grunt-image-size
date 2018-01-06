@@ -17,10 +17,6 @@ module.exports = function(grunt) {
     'Retrieve images size information',
     function() {
       var options = this.options({
-        processName: undefined,
-        processEntry: undefined,
-        processSizes: undefined,
-        configObject: undefined,
         replacer: null,
         space: 2
       });
