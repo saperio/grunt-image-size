@@ -22,7 +22,7 @@ module.exports = function(grunt) {
       });
 
       if (!this.files.length) {
-        return grunt.log.error('No files or `options.configObject` specified.');
+        return grunt.log.error('No files specified.');
       }
 
       var processedFiles = 0;
