@@ -22,7 +22,7 @@
   "engines": {
     "node": ">= 0.8.0"
   },
-  "main": "tasks/grayMatter.js",
+  "main": "tasks/image_size.js",
   "files": [
     "tasks"
   ],
