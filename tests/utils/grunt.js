@@ -1,7 +1,7 @@
-const gt = require('grunt')
-const gruntfile = require('../../gruntfile')
+const gt = require('grunt');
+const gruntfile = require('../../gruntfile');
 
-const grunt = gruntfile.call(gt, gt)
+const grunt = gruntfile.call(gt, gt);
 
 /**
  * Run Grunt instance with specified tasks as args
@@ -9,11 +9,15 @@ const grunt = gruntfile.call(gt, gt)
  *                          When not specified will run `default` task
  * @return {promise} With resolved status on succesful pass, or reject with `new Error()` on failure
  */
-const runGrunt = (args) => new Promise((resolve, reject) =>
-  grunt.util.spawn({ cmd: 'grunt', args }, (error) => error ? reject(new Error(error)) : resolve('Done!'))
-)
+const runGrunt = args =>
+  new Promise((resolve, reject) =>
+    grunt.util.spawn(
+      { cmd: 'grunt', args },
+      error => (error ? reject(new Error(error)) : resolve('Done!'))
+    )
+  );
 
 module.exports = {
   grunt,
   runGrunt
-}
+};
