@@ -7,7 +7,6 @@
 
 'use strict';
 
-var path = require('path');
 var chalk = require('chalk');
 var sizer = require('image-size');
 
