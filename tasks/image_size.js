@@ -26,6 +26,8 @@ module.exports = function(grunt) {
       }
 
       var processedFiles = 0;
+      var shouldSetConfigObject =
+        options.configObject && options.configObject.length;
 
       this.files.forEach(function(file) {
         if (!file.src.length)
@@ -33,7 +35,9 @@ module.exports = function(grunt) {
             'No source files specified for ' + chalk.cyan(file.dest) + '.'
           );
 
-        if (!file.dest) return grunt.log.error('No dest file specified.');
+        if (!file.dest && !shouldSetConfigObject) {
+          return grunt.log.error('No dest file or `configObject` specified.');
+        }
 
         var sizes = [];
 
@@ -71,16 +75,18 @@ module.exports = function(grunt) {
           sizes = options.processSizes.call(file, sizes, file);
         }
 
-        if (options.configObject && options.configObject.length) {
+        if (shouldSetConfigObject) {
           grunt.config.set(options.configObject, sizes);
         }
 
-        grunt.file.write(
-          file.dest,
-          JSON.stringify(sizes, options.replacer, options.space)
-        );
+        if (file.dest) {
+          grunt.file.write(
+            file.dest,
+            JSON.stringify(sizes, options.replacer, options.space)
+          );
 
-        grunt.log.writeln('File ' + chalk.cyan(file.dest) + ' created.');
+          grunt.log.writeln('File ' + chalk.cyan(file.dest) + ' created.');
+        }
       });
 
       grunt.log.ok(
