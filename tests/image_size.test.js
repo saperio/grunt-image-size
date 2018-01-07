@@ -52,6 +52,16 @@ describe('Image Size task', () => {
       expect(readJSON(buildPath.singleWithProcessSizes)).toMatchSnapshot()
     ));
 
+  // @todo This can't be tested ringht now because there is no way to access Grunt context after
+  //       task has been accomplished. The only way isn't implemented yet.implemented
+  //       See https://github.com/gruntjs/grunt/issues/1184
+
+  // it('should produce correct data file with `processSizes` option for single source', () =>
+  //   runGrunt(['image_size:singleWithConfigObject']).then(() => {}));
+
+  // it('should produce correct data file with `processSizes` option for single source', () =>
+  //   runGrunt(['image_size:singleWithConfigObjectAndDest']).then(() => {}));
+
   it('should error on not image file', () =>
     expect(runGrunt(['image_size:notImage'])).rejects.toBeDefined());
 });

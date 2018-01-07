@@ -27,7 +27,12 @@ module.exports = grunt => {
         singleWithProcessEntry:
           '<%= path.build.root %>/singleWithProcessEntry.json',
         singleWithProcessSizes:
-          '<%= path.build.root %>/singleWithProcessSizes.json'
+          '<%= path.build.root %>/singleWithProcessSizes.json',
+        singleWithConfigObject: 'configObjectTest',
+        singleWithConfigObjectAndDest: {
+          dest: '<%= path.build.root %>/singleWithConfigObjectAndDest.json',
+          property: 'configObjectAndDestTest'
+        }
       }
     }
   });
@@ -85,6 +90,19 @@ module.exports = grunt => {
       },
       src: '<%= path.source.single %>/*',
       dest: '<%= path.build.singleWithProcessSizes %>'
+    },
+    singleWithConfigObject: {
+      options: {
+        configObject: '<%= path.build.singleWithConfigObject %>'
+      },
+      src: '<%= path.source.single %>/*'
+    },
+    singleWithConfigObjectAndDest: {
+      options: {
+        configObject: '<%= path.build.singleWithConfigObjectAndDest.property %>'
+      },
+      src: '<%= path.source.single %>/*',
+      dest: '<%= path.build.singleWithConfigObjectAndDest.dest %>'
     },
     notImage: {
       src: '<%= path.source.notImage %>/*',
