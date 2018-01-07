@@ -30,7 +30,7 @@ module.exports = function(grunt) {
       this.files.forEach(function(file) {
         if (!file.src.length)
           return grunt.log.error(
-            'No source files specified for ' + chalk.cyan(dest) + '.'
+            'No source files specified for ' + chalk.cyan(file.dest) + '.'
           );
 
         if (!file.dest) return grunt.log.error('No dest file specified.');
