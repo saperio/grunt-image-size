@@ -7,86 +7,86 @@
 
 'use strict';
 
-var chalk = require('chalk');
-var sizer = require('image-size');
+const { cyan } = require('chalk');
+const sizer = require('image-size');
 
-module.exports = function(grunt) {
-  grunt.registerMultiTask(
+module.exports = ({
+  registerMultiTask,
+  log,
+  verbose,
+  file: { isFile, write },
+  config,
+  util: { pluralize }
+}) =>
+  registerMultiTask(
     'image_size',
     'Retrieve images size information',
     function() {
-      var options = this.options({
-        replacer: null,
-        space: 2
-      });
+      const {
+        configObject,
+        processName,
+        processEntry,
+        processSizes,
+        replacer,
+        space
+      } = this.options({ replacer: null, space: 2 });
 
-      if (!this.files.length) return grunt.log.error('No files specified.');
+      if (!this.files.length) return log.error('No files specified.');
 
-      var processedFiles = 0;
-      var shouldSetConfigObject =
-        options.configObject && options.configObject.length;
+      const shouldSetConfigObject = configObject && configObject.length;
+      let processedFiles = 0;
 
-      this.files.forEach(function(file) {
+      this.files.forEach(file => {
         if (!file.dest && !shouldSetConfigObject)
-          return grunt.log.error('No dest file or `configObject` specified.');
+          return log.error('No dest file or `configObject` specified.');
 
         if (!file.src || !file.src.length)
-          return grunt.log.error(
-            'No source files specified for ' + chalk.cyan(file.dest || '`' + options.configObject + '`') + '.'
+          return log.error(
+            `No source files specified for ${cyan(
+              file.dest || `\`${configObject}\``
+            )}.`
           );
 
-        var sizes = [];
+        let sizes = [];
 
-        file.src.forEach(function(src) {
-          if (!grunt.file.isFile(src)) return;
+        file.src.forEach(src => {
+          if (!isFile(src)) return;
 
-          var size = sizer(src);
-          var name = src;
+          const { width, height } = sizer(src);
+          let name = src;
 
-          if (typeof options.processName === 'function')
-            name = options.processName.call(file, src, file);
+          if (typeof processName === 'function')
+            name = processName.call(file, src, file);
 
-          var entry = { name: name, width: size.width, height: size.height };
+          let entry = { name, width, height };
 
-          if (typeof options.processEntry === 'function')
-            entry = options.processEntry.call(file, entry, src, file);
+          if (typeof processEntry === 'function')
+            entry = processEntry.call(file, entry, src, file);
 
           sizes.push(entry);
 
-          grunt.verbose.writeln(
-            'Size of ' +
-              src +
-              ' width: ' +
-              size.width.toString() +
-              ', height: ' +
-              size.height.toString()
-          );
+          verbose.writeln(`Size of ${src} width: ${width}, height: ${height}`);
 
           processedFiles++;
         });
 
-        if (typeof options.processSizes === 'function')
-          sizes = options.processSizes.call(file, sizes, file);
+        if (typeof processSizes === 'function')
+          sizes = processSizes.call(file, sizes, file);
 
-        if (shouldSetConfigObject)
-          grunt.config.set(options.configObject, sizes);
+        if (shouldSetConfigObject) config.set(configObject, sizes);
 
         if (file.dest) {
-          grunt.file.write(
-            file.dest,
-            JSON.stringify(sizes, options.replacer, options.space)
-          );
+          write(file.dest, JSON.stringify(sizes, replacer, space));
 
-          grunt.log.writeln('File ' + chalk.cyan(file.dest) + ' created.');
+          log.writeln(`File ${cyan(file.dest)} created.`);
         }
       });
 
-      grunt.log.ok(
-        chalk.cyan(processedFiles) +
-          ' ' +
-          grunt.util.pluralize(processedFiles, 'file/files') +
-          ' processed'
+      log.ok(
+        `${cyan(processedFiles)} ${pluralize(
+          processedFiles,
+          'file/files'
+        )} processed`
       );
     }
   );
-};
