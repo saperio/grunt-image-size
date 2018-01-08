@@ -33,7 +33,7 @@ module.exports = function(grunt) {
           return grunt.log.error('No dest file or `configObject` specified.');
         }
 
-        if (!file.src.length)
+        if (!file.src || !file.src.length)
           return grunt.log.error(
             'No source files specified for ' + chalk.cyan(file.dest || '`' + options.configObject + '`') + '.'
           );
