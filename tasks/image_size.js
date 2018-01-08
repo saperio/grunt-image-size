@@ -29,14 +29,14 @@ module.exports = function(grunt) {
         options.configObject && options.configObject.length;
 
       this.files.forEach(function(file) {
+        if (!file.dest && !shouldSetConfigObject) {
+          return grunt.log.error('No dest file or `configObject` specified.');
+        }
+
         if (!file.src.length)
           return grunt.log.error(
             'No source files specified for ' + chalk.cyan(file.dest) + '.'
           );
-
-        if (!file.dest && !shouldSetConfigObject) {
-          return grunt.log.error('No dest file or `configObject` specified.');
-        }
 
         var sizes = [];
 
