@@ -20,7 +20,7 @@
     "image-size"
   ],
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 6.0.0"
   },
   "main": "tasks/image_size.js",
   "files": [
