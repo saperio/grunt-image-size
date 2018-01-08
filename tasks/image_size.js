@@ -35,7 +35,7 @@ module.exports = function(grunt) {
 
         if (!file.src.length)
           return grunt.log.error(
-            'No source files specified for ' + chalk.cyan(file.dest) + '.'
+            'No source files specified for ' + chalk.cyan(file.dest || '`' + options.configObject + '`') + '.'
           );
 
         var sizes = [];
