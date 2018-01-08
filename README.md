@@ -129,9 +129,11 @@ From `image_data` it can be accessed with `grunt.config.get('image_data')` or vi
 
 ### Development and testing
 
-Please, lint and test the code before posting PRs.
+Please, lint and test the code with `npm test` before posting PRs.
 
-Run `npm test` to lint and test the code. See some lint errors? Run `npm run format` to fix them. See tests failing? Now it's real time to make them pass. Use `npm run test:watch` for easier workflow.
+Got some lint errors? Run `npm run format`.
+
+Tests failing? Fix the code to make them pass. Use `npm run test:watch` for easier workflow.
 
 ## License
 
