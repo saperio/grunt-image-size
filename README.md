@@ -26,12 +26,12 @@ This task produces a vector of an image size data from all provided source files
 
 ```js
 [
-    {
-        name : 'path/to/file'
-        width : 100,
-        height : 100
-    },
-    ...
+  {
+    name : 'path/to/file'
+    width : 100,
+    height : 100
+  },
+  ...
 ]
 ```
 
@@ -113,15 +113,15 @@ After processing all images from `img/` script writes size information to `image
 
 ```js
 grunt.initConfig({
-    image_size: {
-        options: {
-            configObject : 'image_data'
-        },
-        files: [{
-            src : 'img/*',
-            dest : 'image_data.json'
-        }]
-    }
+  image_size: {
+    options: {
+      configObject : 'image_data'
+    },
+    files: [{
+      src : 'img/*',
+      dest : 'image_data.json'
+    }]
+  }
 })
 ```
 
