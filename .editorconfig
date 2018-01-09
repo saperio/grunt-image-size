@@ -17,3 +17,6 @@ trim_trailing_whitespace = false
 
 [*.js]
 insert_final_newline = true
+
+[*.json]
+insert_final_newline = true

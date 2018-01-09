@@ -14,6 +14,10 @@
     "name": "SAPer",
     "email": "gsaper@gmail.com"
   },
+  "contributors": [{
+    "name": "ArmorDarks",
+    "email": "github@lavrins.com"
+  }],
   "keywords": [
     "gruntplugin",
     "image",
