@@ -1,6 +1,6 @@
 # grunt-image-size
 
-Retrieve image size information. The [image-size](https://github.com/netroy/image-size) port for grunt. 
+Retrieve image size information. The [image-size](github.com/image-size/image-size) port for grunt. 
 
 ## Getting Started
 
