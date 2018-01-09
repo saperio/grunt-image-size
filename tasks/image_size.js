@@ -4,7 +4,6 @@
  * Copyright (c) 2014 SAPer
  * Licensed under the MIT license.
  */
-
 'use strict';
 
 const { cyan } = require('chalk');
@@ -36,68 +35,57 @@ module.exports = ({
       }
 
       const shouldSetConfigObject = configObject && configObject.length;
-      let processedFiles = 0;
-
-      this.files.forEach(file => {
+      const all = this.files.reduce((prev, file) => {
         if (!file.dest && !shouldSetConfigObject) {
-          return log.error('No dest file or `configObject` specified.');
+          log.error('No dest file or `configObject` specified.');
+          return prev;
         }
 
         if (!file.src || !file.src.length) {
-          return log.error(
+          log.error(
             `No source files specified for ${cyan(
               file.dest || `\`${configObject}\``
             )}.`
           );
+          return prev;
         }
 
-        let sizes = [];
-
-        file.src.forEach(src => {
-          if (!isFile(src)) {
-            return;
-          }
-
+        const sizes = file.src.filter(src => isFile(src)).map(src => {
           const { width, height } = sizer(src);
-          let name = src;
 
+          let name = src;
           if (typeof processName === 'function') {
             name = processName.call(file, src, file);
           }
 
           let entry = { name, width, height };
-
           if (typeof processEntry === 'function') {
             entry = processEntry.call(file, entry, src, file);
           }
 
-          sizes.push(entry);
-
           verbose.writeln(`Size of ${src} width: ${width}, height: ${height}`);
-
-          processedFiles++;
+          return entry;
         });
 
-        if (typeof processSizes === 'function') {
-          sizes = processSizes.call(file, sizes, file);
-        }
-
-        if (shouldSetConfigObject) {
-          config.set(configObject, sizes);
-        }
-
         if (file.dest) {
-          write(file.dest, JSON.stringify(sizes, replacer, space));
+          let output = sizes;
+          if (typeof processSizes === 'function') {
+            output = processSizes.call(file, sizes.slice(), file);
+          }
 
+          write(file.dest, JSON.stringify(output, replacer, space));
           log.writeln(`File ${cyan(file.dest)} created.`);
         }
-      });
+
+        return prev.concat(sizes);
+      }, []);
+
+      if (shouldSetConfigObject) {
+        config.set(configObject, all);
+      }
 
       log.ok(
-        `${cyan(processedFiles)} ${pluralize(
-          processedFiles,
-          'file/files'
-        )} processed`
+        `${cyan(all.length)} ${pluralize(all.length, 'file/files')} processed`
       );
     }
   );
